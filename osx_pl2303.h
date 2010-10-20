@@ -2,6 +2,7 @@
  * osx_pl2303.h Prolific PL2303 USB to serial adaptor driver for OS X
  *
  * Copyright (c) 2006 BJA Electronics, Jeroen Arnoldus (opensource@bja-electronics.nl)
+ * Some changes by Hugo Vincent, October 2010.
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -311,9 +312,9 @@ typedef struct
 	
 } PortInfo_t;
 
-class nl_bjaelectronics_driver_PL2303 : public IOSerialDriverSync
+class osx_pl2303 : public IOSerialDriverSync
 {
-	OSDeclareDefaultStructors(nl_bjaelectronics_driver_PL2303)
+	OSDeclareDefaultStructors(osx_pl2303)
 private:
     UInt32          fCount;         // usb write length
     UInt8           fSessions;      // Active sessions (count of opens on /dev/tty entries)
@@ -353,7 +354,8 @@ private:
     static void         dataWriteComplete( void *obj, void *param, IOReturn ior, UInt32 remaining );
     
     bool                initForPM(IOService *provider);
-	
+    bool                failure(IOService *provider);
+    
 public:
 	IOUSBDevice         *fpDevice;
     IOUSBInterface      *fpInterface;

@@ -1,0 +1,29 @@
+This is a slightly updated version of the open source Prolific PL2303 USB
+to Serial driver for Mac. 
+
+Users of PL2303 devices on OS X should note that the official driver
+(which can be downloaded from Prolific) seems to be rampantly buggy...
+
+Hugo Vincent, 20th October 2010.
+	http://github.com/hugovincent/osx-pl2303/
+
+Original version at 
+	http://osx-pl2303.sourceforge.net/ 
+and 
+	http://bitbucket.org/ddb/osx-pl2303/.
+
+Changes:
+* Merged the Sourceforge and BitBucket upstreams.
+* Renamed from nl.bjaelectronics.driver.PL2303 to net.sourceforge.osx-pl2303 (and
+  similarly for class names). 
+* Removed all the PID/VID combos I can't test. Easy to add them back if you 
+  need them (just duplicate one of the current ones in Info.plist). Only
+  the default (067B/2303) remains. 
+* Set all the OS version minimums to 10.6 (as I can't test older versions).
+* Fixed some bugs that prevented 64-bit builds working. This necessitated
+  some refactoring due to unspecified pointer/integer size assumptions.
+* Fixed or silenced most of the compiler warnings.
+* Update distribution packager.
+* Add very hackish stubs for power management methods that seem to be required
+  now (otherwise you get link/undefined symbol errors when loading the kext).
+

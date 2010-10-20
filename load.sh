@@ -1,8 +1,8 @@
 #!/bin/sh
-cp -r ./build/Release-10.4-universal/osx-pl2303.kext /tmp
-cd /tmp
+cp -R ./build/Release/osx-pl2303.kext /System/Library/Extensions
+cd /System/Library/Extensions
+chown -R root:wheel osx-pl2303.kext
+chmod -R 755 osx-pl2303.kext
+kextcache -e
 kextload osx-pl2303.kext
-#/Users/Jeroen/Projects/Xcode/SerialTest/build/Release/SerialTest
-#avrdude -p m128 -c avrisp2 -P /dev/tty.PL2303-151
-#kextunload osx-pl2303.kext
 
