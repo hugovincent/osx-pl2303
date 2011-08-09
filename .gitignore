@@ -2,4 +2,5 @@ build/**
 **.pbxuser
 **.perspectivev3
 distribution/build/**
+**.xcuserdatad
 
